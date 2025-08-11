@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "compromise": "^14.14.4",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.4.0",
+    "node-fetch": "^2.7.0",
+    "sentiment": "^5.0.2"
+  }
+}
