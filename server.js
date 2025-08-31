@@ -8,7 +8,7 @@ const { getSentiment, extractKeywords } = require("./nlp-utils");
 const serviceAccount = require("./serviceAccountKey.json");
 admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 const db = admin.firestore();
-
+const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
