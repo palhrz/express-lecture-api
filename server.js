@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'http://localhost:3000', 'https://lems.onrender.com',
+  origin: ['http://localhost:3000', 'https://lems.onrender.com'],
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
