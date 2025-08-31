@@ -10,15 +10,19 @@ admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 const db = admin.firestore();
 
 const app = express();
-const port = 4000;
+const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3000', 'https://lems.onrender.com',
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "build")));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 app.post('/api/create-form', async (req, res) => {
   const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL;
   
