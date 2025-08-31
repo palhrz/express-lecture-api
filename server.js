@@ -20,11 +20,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+
 app.post('/api/create-form', async (req, res) => {
   const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL;
+  console.log("ENV:", APPS_SCRIPT_URL);
   
   try {
     const { segments, sessionId } = req.body;
@@ -152,6 +151,20 @@ function getWeekNumber(date) {
   return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
 }
 
-app.listen(port, () => {
-  console.log(`Proxy server listening at http://localhost:${port}`);
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
+app.use((req, res, next) => {
+  console.log("Incoming request:", req.method, req.url);
+  next();
+});
+app.get("/", (req, res) => {
+  res.send("API is running ✅");
+});
+
+// app.listen(port, () => {
+//   console.log(`Proxy server listening at http://localhost:${port}`);
+// });
+app.listen(PORT, () => {
+  console.log(`Proxy server listening at http://localhost:${PORT}`);
 });
