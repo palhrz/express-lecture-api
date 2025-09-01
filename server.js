@@ -10,7 +10,7 @@ admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 const db = admin.firestore();
 const path = require("path");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://lems.onrender.com'],
